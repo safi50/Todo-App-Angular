@@ -1,0 +1,12 @@
+<!--TodoAdd is am output func - on this output -> we need to call addTodoITem function and pass in the event
+which is the data received as output  -->
+<app-add-todo-item (todoAdd)="addTodoItem($event)"></app-add-todo-item>
+<div *ngIf="this.todoArray.length ===0; else elseBlock">No todos to display</div>
+<ng-template #elseBlock>
+    <h2>Your Todos are</h2>
+    <div *ngFor="let x of todoArray">
+        <app-todo-item [todoData]="x" (todoDelete)="deleteTodoItem($event)"
+            (checkBoxToggled)="toggleTodoCheckBox($event)">
+        </app-todo-item>
+    </div>
+</ng-template>
